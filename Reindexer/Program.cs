@@ -11,9 +11,10 @@ namespace Reindexer
     {
         private static void Main(string[] args)
         {
-            var localClient = GetClient("Nodes=http://local-elasticsearch:9200", "email-service-prod-04nov2016");
-            var localClient2 = GetClient("Nodes=http://local-elasticsearch:9200", "email-service-prod-04nov2016-copy");
+            var localClient = GetClient("Nodes=http://local-elasticsearch:9200", "email-service-240117");
+            var localClient2 = GetClient("Nodes=http://local-elasticsearch:9200", "email-service");
             var remoteClient = GetClient("Nodes=http://logs.foxites.com", "email-service");
+            var remoteErick = GetClient("Nodes=http://local-elasticerick:9200", "email-service");
 
             Reindex(localClient, localClient2);
             //FindId(localClient);
@@ -93,8 +94,8 @@ namespace Reindexer
 
         public static void Reindex(IElasticClient clientFrom, IElasticClient clientTo)
         {
-            var dateFrom = DateMath.FromString("05/11/2016 00:00");
-            var dateTo = DateMath.FromString("11/02/2017 15:29");
+            var dateFrom = DateMath.FromString("01/01/2015 00:00");
+            var dateTo = DateMath.FromString("14/02/2017 15:29");
 
             Console.WriteLine("Reindexing documents to new index...");
             var searchResult = clientFrom.Search<EmailLog>(s => s

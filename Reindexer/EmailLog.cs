@@ -33,6 +33,17 @@ public class EmailLog
 
     public ICollection<EmailLogEvent> Events { get; set; }
 
+    public string DomainName { get; set; }
+
+    public string EmailType
+    {
+        get
+        {
+            return DripCampaign != null && DripCampaign.ID == null ? "Transactional" : "Campaign";
+        }
+        set { }
+    }
+
     public EmailLog()
     {
         Events = new HashSet<EmailLogEvent>();

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EmailLog
 {
-    [String(Ignore = true)]
+    [Text(Ignore = true)]
     public string ID { get; set; }
 
     public App App { get; set; }
